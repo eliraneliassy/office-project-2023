@@ -1,2 +1,5 @@
-<officeproject-nx-welcome></officeproject-nx-welcome>
+<ng-container *ngFor="let book of books$ | async">
+    <officeproject-book [book]="book"></officeproject-book>
+</ng-container>
+
 <router-outlet></router-outlet>
