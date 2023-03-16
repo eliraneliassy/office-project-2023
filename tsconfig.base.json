@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@office/books": ["libs/book/src/index.ts"]
+      "@office/books": ["libs/book/src/index.ts"],
+      "@office/ui-components": ["libs/ui-components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
