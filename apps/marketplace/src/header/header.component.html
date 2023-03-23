@@ -4,7 +4,11 @@
   
       <div class="links">
           <a routerLink="feed">Feed</a>
-          <a routerLink="feed">Cart</a>
+          <a routerLink="cart">Cart</a>
+      </div>
+
+      <div class="cart-data">
+        # items: {{numberInCart$ | async}}
       </div>
   
       <div class="login">

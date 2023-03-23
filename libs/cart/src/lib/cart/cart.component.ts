@@ -1,4 +1,5 @@
-import { Observable } from 'rxjs';
+import { CartService } from './../cart.service';
+import { Observable, of } from 'rxjs';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Book } from '@office/books';
 
@@ -10,4 +11,10 @@ import { Book } from '@office/books';
 })
 export class CartComponent {
   cart$?: Observable<Book[]>;
+
+  constructor(private cartService: CartService) {
+    this.cart$ = this.cartService.getCart();
+  }
+
+
 }

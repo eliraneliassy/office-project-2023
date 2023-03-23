@@ -1,13 +1,10 @@
-<div class="container" *ngIf="book">
-    <div class="title">
+<mat-card class="container" *ngIf="book">
+    <mat-card-title>
         {{book.title}}
-    </div>
+    </mat-card-title>
 
-    <!-- <div class="description">
-        {{book.description}}
-    </div> -->
 
-    <img [src]="book.preivewImgUrl">
+    <img [src]="book.preivewImgUrl" width="250px">
 
     <div class="price">
         {{book.price}}
@@ -16,4 +13,4 @@
     <o-button (click)="addToCartHanlder()" text="Add To Cart"></o-button>
 
 
-</div>
+</mat-card>

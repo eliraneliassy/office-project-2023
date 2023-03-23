@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnDestroy } from '@angular/core';
+import { CartService } from '@office/cart';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'officeproject-header',
@@ -6,4 +8,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  numberInCart$: Observable<number>;
+
+  constructor(private cartService: CartService,
+  ) {
+    this.numberInCart$ = this.cartService.getNumberOfItemsInCart()
+  }
+
+
+}
