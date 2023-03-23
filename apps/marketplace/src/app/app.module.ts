@@ -7,14 +7,19 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { BookComponentModule } from '@office/books';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HeaderComponent } from '../header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
-    BookComponentModule
+    BookComponentModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

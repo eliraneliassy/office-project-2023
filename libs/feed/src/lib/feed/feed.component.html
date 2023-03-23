@@ -1,3 +1,6 @@
-<ng-container *ngFor="let book of books$ | async">
-    <officeproject-book [book]="book"></officeproject-book>
-</ng-container>
+<div class="container">
+  <officeproject-book
+    [book]="book"
+    *ngFor="let book of books$ | async"
+  ></officeproject-book>
+</div>

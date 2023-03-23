@@ -1,0 +1,11 @@
+mat-toolbar{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+
+    .links {
+        a{
+            margin-right: 15px;
+        }
+    }
+}
