@@ -1,3 +1,4 @@
+import { CartQuery } from './cart.query';
 import { CartService } from './../cart.service';
 import { Observable, of } from 'rxjs';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -12,8 +13,8 @@ import { Book } from '@office/books';
 export class CartComponent {
   cart$?: Observable<Book[]>;
 
-  constructor(private cartService: CartService) {
-    this.cart$ = this.cartService.getCart();
+  constructor(private cartQuery: CartQuery) {
+    this.cart$ = this.cartQuery.selectCart$;
   }
 
 

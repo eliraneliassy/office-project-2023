@@ -1,5 +1,7 @@
+
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnDestroy } from '@angular/core';
-import { CartService } from '@office/cart';
+import { CartQuery, CartService } from '@office/cart';
+
 import { Subscription, Observable } from 'rxjs';
 
 @Component({
@@ -11,9 +13,9 @@ import { Subscription, Observable } from 'rxjs';
 export class HeaderComponent {
   numberInCart$: Observable<number>;
 
-  constructor(private cartService: CartService,
+  constructor(private cartQuery: CartQuery
   ) {
-    this.numberInCart$ = this.cartService.getNumberOfItemsInCart()
+    this.numberInCart$ = this.cartQuery.selectNumOfItemsInCart$
   }
 
 

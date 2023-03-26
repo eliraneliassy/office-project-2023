@@ -1,52 +1,44 @@
+import { Store } from '@datorama/akita';
 import { Injectable } from '@angular/core';
 import { Book } from '@office/books';
 import { BehaviorSubject, Observable, of, map } from 'rxjs';
+import { CartQuery } from './cart/cart.query';
+import { CartState, CartStore } from './cart/cart.store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private cart$: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
-
-  getCart(): Observable<Book[]> {
-    return this.cart$.asObservable();
-  }
-
-  getCartSnapshot() {
-    return this.cart$.getValue();
-  }
-
-  setCart(cart: Book[]) {
-    this.cart$.next(cart);
-  }
+  constructor(private cartStore: CartStore, private cartQuery: CartQuery) { }
 
   addToCart(book: Book): void {
-    const currentCart = this.getCartSnapshot();
-    const newCart = [...currentCart, book];
-    
-    this.setCart(newCart);
+    this.cartStore.update((currentCartState: CartState) => ({
+      ...currentCartState, items: [...currentCartState.items, book]
+    }))
+
   }
 
   removeFromCart(book: Book) {
 
-    const currentCart = this.getCartSnapshot();
-    const index = currentCart.findIndex(b => b.id === book.id);
-    if (index > -1) {
-      currentCart.splice(index, 1);
-      this.setCart(currentCart);
-    }
+    this.cartStore.update((currentCartState: CartState) => {
+      const index = currentCartState.items.findIndex(b => b.id === book.id);
+      let newCart: Book[] = [];
+      if (index > -1) {
+        newCart = currentCartState.items.filter(b => b.id !== book.id);
+        return { items: newCart };
+      }
 
-    
+      return { ...currentCartState };
+
+
+    })
+
   }
 
   resetCart() {
-    this.setCart([])
+    this.cartStore.update((currentCartSate: CartState) => ({ ...currentCartSate, items: [] }))
   }
 
-  getNumberOfItemsInCart(): Observable<number>{
-    return this.getCart().pipe(
-      map((cart: Book[]) => cart.length)
-    )
-  }
+
 }

@@ -11,6 +11,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from '../header/header.component';
 
+import { ENVIRONMENT_INITIALIZER, inject, NgZone } from '@angular/core';
+import { akitaDevtools, DevtoolsOptions } from '@datorama/akita';
+
+export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
+  return {
+    provide: ENVIRONMENT_INITIALIZER,
+    multi: true,
+    useFactory() {
+      return () => {
+        akitaDevtools(inject(NgZone), options);
+      };
+    },
+  };
+}
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
