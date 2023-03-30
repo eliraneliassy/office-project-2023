@@ -4,12 +4,14 @@
 <form [formGroup]="form">
     
     <o-input formControlName="username"
-    [required]="true"
+    [isRequired]="true"
     label="Username"
+    errorMsg="User name is required"
     ></o-input>
     
     <o-input formControlName="password"
-    [required]="true"
+    [isRequired]="true"
+    pattern="[a-zA-Z ]{3}"
     label="Password"
     ></o-input>
 
