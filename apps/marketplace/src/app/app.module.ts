@@ -13,6 +13,7 @@ import { HeaderComponent } from '../header/header.component';
 
 import { ENVIRONMENT_INITIALIZER, inject, NgZone } from '@angular/core';
 import { akitaDevtools, DevtoolsOptions } from '@datorama/akita';
+import { SlideShowComponentModule } from '@office/ui-components';
 
 export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
   return {
@@ -35,6 +36,7 @@ export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
     BookComponentModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    SlideShowComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent],
