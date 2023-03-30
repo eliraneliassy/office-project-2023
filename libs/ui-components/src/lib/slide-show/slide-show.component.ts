@@ -1,5 +1,5 @@
 import { ButtonComponentModule } from '@office/ui-components';
-import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, Input, NgModule } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, Input, NgModule, TemplateRef } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
@@ -10,9 +10,15 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 })
 export class SlideShowComponent implements AfterViewInit {
   @Input() slides: string[] = [];
+  @Input() slidesTemplate?: TemplateRef<any>;
 
   slidesPositoions: any[] = [];
   currentPosition = 0;
+
+  navigation = {
+    prev: () => this.slide(-1),
+    next: () => this.slide(1)
+  };
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
   ngAfterViewInit(): void {

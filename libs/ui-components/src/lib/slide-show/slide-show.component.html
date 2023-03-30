@@ -1,8 +1,19 @@
 <div class="slider-show">
     <div class="slider">
         <div class="slide" *ngFor="let slide of slides">
-            <img [src]="slide">
+            <ng-container 
+            [ngTemplateOutlet]="slidesTemplate || defaultTemplate"
+            [ngTemplateOutletContext]="{
+                $implicit: slide,
+                navigation
+            }"></ng-container>
+
+            <ng-template #defaultTemplate>
+                <img [src]="slide">
+            </ng-template>
         </div>
+
+        
 
         <o-button class="btn next" (click)="slide(+1)" text="Next"></o-button>
         <o-button class="btn prev" (click)="slide(-1)" text="Prev"></o-button>

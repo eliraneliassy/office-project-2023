@@ -1,5 +1,12 @@
 <officeproject-header></officeproject-header>
 
-<o-slide-show [slides]="slides"></o-slide-show>
+<o-slide-show [slides]="names" [slidesTemplate]="myTemplate"></o-slide-show>
+
+<ng-template #myTemplate let-slide let-nav="navigation">
+
+    My name is: {{slide}}
+    <button (click)="nav.next()">NEXT</button>
+    <button (click)="nav.prev()">PREV</button>
+</ng-template>
 
 <router-outlet></router-outlet>
