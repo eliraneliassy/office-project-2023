@@ -1,0 +1,17 @@
+<div class="input-container">
+  <label>{{ label }}</label>
+  <input
+    [type]="type"
+    #input
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouch()"
+    [disabled]=""
+  />
+  <img
+    src="https://cdn.pixabay.com/photo/2014/04/02/11/01/tick-305245_960_720.png"
+  />
+</div>
+
+<div class="error">
+  {{ errorMsg }}
+</div>

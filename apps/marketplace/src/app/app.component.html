@@ -1,12 +1,27 @@
 <officeproject-header></officeproject-header>
 
-<o-slide-show [slides]="names" [slidesTemplate]="myTemplate"></o-slide-show>
 
-<ng-template #myTemplate let-slide let-nav="navigation">
+<form [formGroup]="form">
+    
+    <o-input formControlName="username"
+    [required]="true"
+    label="Username"
+    ></o-input>
+    
+    <o-input formControlName="password"
+    [required]="true"
+    label="Password"
+    ></o-input>
+
+    <button (click)="submit()">SUBMIT</button>
+</form>
+<!-- <o-slide-show [slides]="names" [slidesTemplate]="myTemplate"></o-slide-show> -->
+
+<!-- <ng-template #myTemplate let-slide let-nav="navigation">
 
     My name is: {{slide}}
     <button (click)="nav.next()">NEXT</button>
     <button (click)="nav.prev()">PREV</button>
-</ng-template>
+</ng-template> -->
 
 <router-outlet></router-outlet>

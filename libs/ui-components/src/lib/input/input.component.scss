@@ -1,0 +1,18 @@
+.input-container{
+    display: flex;
+    justify-content: center;
+
+    img{
+        width: 15px
+    }
+
+    input {
+        &.valid{
+            border: 3px solid green
+        }
+
+        &.invalid{
+            border: 3px solid red
+        }
+    }
+}
