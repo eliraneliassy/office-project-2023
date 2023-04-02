@@ -1,5 +1,6 @@
+import { AsyncPipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Book, BooksService } from '@office/books';
+import { Book, BookComponent, BooksService } from '@office/books';
 import { CartService } from '@office/cart';
 import { Observable } from 'rxjs';
 
@@ -8,6 +9,8 @@ import { Observable } from 'rxjs';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [BookComponent, AsyncPipe, NgFor]
 })
 export class FeedComponent implements OnInit {
   books$?: Observable<Book[]>;

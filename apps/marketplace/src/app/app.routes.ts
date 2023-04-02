@@ -8,10 +8,10 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'feed',
-        loadChildren: () => import('@office/feed').then(m => m.FeedModule)
+        loadComponent: () => import('@office/feed').then(m => m.FeedComponent)
     },
     {
         path: 'cart',
-        loadChildren: () => import('@office/cart').then(m => m.CartModule)
+        loadComponent: () => import('@office/cart').then(m => m.CartComponent)
     }
 ];
