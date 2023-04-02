@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Book, BooksService } from '@office/books';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoggerService } from '@office/logger';
 
 @Component({
   selector: 'officeproject-root',
@@ -13,14 +14,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private loggerService: LoggerService) { 
+      this.loggerService.log('HELLO FROM MARKETPLACE');
+    }
 
   form: FormGroup = this.fb.group({
     username: this.fb.control(''),
     password: this.fb.control('')
   });
 
-  submit(){
+  submit() {
     console.log(this.form);
   }
 

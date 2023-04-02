@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,6 +16,8 @@ import { ENVIRONMENT_INITIALIZER, inject, NgZone } from '@angular/core';
 import { akitaDevtools, DevtoolsOptions } from '@datorama/akita';
 import { InputComponentModule, SlideShowComponentModule } from '@office/ui-components';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoggerConfig, LoggerModule, LOGGER_CONFIG } from '@office/logger';
+import { environment } from '../environments/environment';
 
 export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
   return {
@@ -28,6 +31,10 @@ export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
   };
 }
 
+const loggerConfig: LoggerConfig = {
+  applicaitonName: environment.appName
+};
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -39,9 +46,16 @@ export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
     MatToolbarModule,
     SlideShowComponentModule,
     ReactiveFormsModule,
-    InputComponentModule
+    InputComponentModule,
+    LoggerModule.forRoot(loggerConfig)
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: LOGGER_CONFIG,
+    //   useValue: loggerConfig,
+    //   multi: false
+    // }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
