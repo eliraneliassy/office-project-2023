@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { feedRoutes } from './lib.routes';
 import { FeedComponent } from './feed/feed.component';
-import { BookComponentModule } from '@office/books';
+import { BookComponent } from '@office/books';
 
 @NgModule({
   imports: [
     CommonModule, 
     RouterModule.forChild(feedRoutes),
-    BookComponentModule
+    BookComponent
   ],
   declarations: [FeedComponent],
 })

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, NgModule, Self, ViewChild, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { AbstractControl, ControlValueAccessor, NgControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { AbstractControl, ControlValueAccessor, NgControl, NG_VALIDATORS, NG_VAL
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgClass, NgIf], 
   providers: [
     // {
     //   provide: NG_VALUE_ACCESSOR,
@@ -98,9 +100,4 @@ setDisabledState ? (isDisabled: boolean): void {
 }
 }
 
-@NgModule({
-  imports: [CommonModule],
-  declarations: [InputComponent],
-  exports: [InputComponent],
-})
-export class InputComponentModule { }
+

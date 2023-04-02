@@ -1,12 +1,15 @@
-import { ButtonComponentModule } from '@office/ui-components';
+import { ButtonComponent } from './../button/button.component';
+
 import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, Input, NgModule, TemplateRef } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { DOCUMENT, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'o-slide-show',
   templateUrl: './slide-show.component.html',
   styleUrls: ['./slide-show.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ButtonComponent, CommonModule],
+  standalone: true
 })
 export class SlideShowComponent implements AfterViewInit {
   @Input() slides: string[] = [];
@@ -47,10 +50,3 @@ export class SlideShowComponent implements AfterViewInit {
 
   }
 }
-
-@NgModule({
-  imports: [CommonModule, ButtonComponentModule],
-  declarations: [SlideShowComponent],
-  exports: [SlideShowComponent],
-})
-export class SlideShowComponentModule { }

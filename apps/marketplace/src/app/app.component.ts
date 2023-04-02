@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 
 import { Observable } from 'rxjs';
 

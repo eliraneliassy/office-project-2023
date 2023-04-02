@@ -7,17 +7,17 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
-import { BookComponentModule } from '@office/books';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from '../header/header.component';
 
 import { ENVIRONMENT_INITIALIZER, inject, NgZone } from '@angular/core';
 import { akitaDevtools, DevtoolsOptions } from '@datorama/akita';
-import { InputComponentModule, SlideShowComponentModule } from '@office/ui-components';
+import { InputComponent, SlideShowComponent } from '@office/ui-components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoggerConfig, LoggerModule, LOGGER_CONFIG } from '@office/logger';
 import { environment } from '../environments/environment';
+import { BookComponent } from '@office/books';
 
 export function provideAkitaDevtools(options: Partial<DevtoolsOptions> = {}) {
   return {
@@ -41,12 +41,12 @@ const loggerConfig: LoggerConfig = {
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
-    BookComponentModule,
+    BookComponent,
     BrowserAnimationsModule,
     MatToolbarModule,
-    SlideShowComponentModule,
+    SlideShowComponent,
     ReactiveFormsModule,
-    InputComponentModule,
+    InputComponent,
     LoggerModule.forRoot(loggerConfig)
   ],
   providers: [
