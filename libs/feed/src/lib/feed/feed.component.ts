@@ -1,7 +1,7 @@
 import { AsyncPipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Book, BookComponent, BooksService } from '@office/books';
-import { CartService } from '@office/cart';
+import { CartService } from '@office/cart-state';
 import { Observable } from 'rxjs';
 
 @Component({

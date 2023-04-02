@@ -17,6 +17,7 @@
     "paths": {
       "@office/books": ["libs/book/src/index.ts"],
       "@office/cart": ["libs/cart/src/index.ts"],
+      "@office/cart-state": ["libs/cart-state/src/index.ts"],
       "@office/feed": ["libs/feed/src/index.ts"],
       "@office/logger": ["libs/logger/src/index.ts"],
       "@office/ui-components": ["libs/ui-components/src/index.ts"]

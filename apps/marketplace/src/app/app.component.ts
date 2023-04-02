@@ -1,25 +1,34 @@
-import { RouterModule } from '@angular/router';
+import { InputComponent } from '@office/ui-components';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Book, BooksService } from '@office/books';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoggerService } from '@office/logger';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'officeproject-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    InputComponent,
+    ReactiveFormsModule,
+    HeaderComponent
+  ]
 })
 export class AppComponent {
 
   constructor(
     private fb: FormBuilder,
-    private loggerService: LoggerService) { 
-      this.loggerService.log('HELLO FROM MARKETPLACE');
-    }
+    private loggerService: LoggerService) {
+    this.loggerService.log('HELLO FROM MARKETPLACE');
+  }
 
   form: FormGroup = this.fb.group({
     username: this.fb.control(''),
