@@ -7,7 +7,7 @@ import { CartQuery } from './cart.query';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'platform'
 })
 export class CartService {
 
